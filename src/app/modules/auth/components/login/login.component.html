@@ -1,0 +1,30 @@
+<div class="form-container" [formGroup] = "form">
+  <div class='error' [ngClass]="this.showMessg ? 'err-field-active' : 'err-field'">
+    <div class="block">{{this.errorMesg}}</div>
+  </div>
+  <div class="header">
+    <h1>Alerts app</h1>
+  </div>
+
+    <mat-form-field>
+      <input matInput formControlName = "login" type="text" placeholder="Login">
+      <mat-label>Login</mat-label>
+      <mat-error *ngIf="!form.controls['login'].valid">
+        <div class="form-error" *ngIf="ctrlGet('login').length === 0">You must enter valid login</div>
+        <div class="form-error" *ngIf="ctrlGet('login').length > 7">Login must be at least 8 chars long. Entered {{ctrlGet('login').length}} chars</div>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-icon class="toggle-icon" (click)="toggleShow()">{{showPassword ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <input matInput formControlName="password" type="{{showPassword ? 'text' : 'password'}}" placeholder="Password">
+      <mat-label>Password</mat-label>
+      <mat-error *ngIf="!form.controls['password'].valid">
+        <div class="form-error">You must enter valid password</div>
+      </mat-error>
+    </mat-form-field>
+    <button mat-button (click)="submitForm()">Login</button>
+    <div class="form-block">
+      Not registered yet? <a [routerLink]="['/register']">Sign in</a>
+    </div>
+</div>
+

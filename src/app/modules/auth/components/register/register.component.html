@@ -1,0 +1,45 @@
+<div class="form-container" [formGroup]="form">
+  <div class="header">
+    <h1>Alerts app</h1>
+    <div class="sub-header">New to our app? Register now!</div>
+  </div>
+    <mat-form-field>
+      <mat-label>Login:</mat-label>
+      <input matInput formControlName="login" type="text" placeholder="Login">
+      <mat-error *ngIf="!form.controls['login'].valid">
+        <div *ngIf="form.controls['login'].value.length === 0" class="empty error-block">
+          Login cannot be empty!
+        </div>
+        <div class="error-block" *ngIf="form.controls['login'].value.length > 0 && form.controls['login'].value.length < 6"></div>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password:</mat-label>
+      <input matInput formControlName="password" type="text" placeholder="Password">
+      <mat-error *ngIf="!form.controls['password'].valid">
+        <div class="error-block empty" *ngIf="form.controls['password'].value.length === 0">Password cannot be empty!</div>
+        <div class='error-block short'
+             *ngIf="form.controls['password'].value.length < 8 && form.controls['password'].value.length > 0">
+          Password must be at least 8 chars long! Chars entered {{form.controls['password'].value.length}}</div>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password repeat:</mat-label>
+      <input  matInput formControlName='passRepeat' type="text" placeholder="Password repeat">
+      <mat-error *ngIf="!form.controls['passRepeat'].valid">
+        <div class="error-block empty" *ngIf="form.controls['passRepeat'].value.length === 0">
+          Please repeat password!
+        </div>
+        <div class="error-block unmatch" *ngIf="form.controls['passRepeat'].value !== form.controls['password'].value">
+          Passwords must match!
+        </div>
+      </mat-error>
+    </mat-form-field>
+
+  <div class="form-block">
+    <button mat-button (click)="submitForm()">Submit</button>
+  </div>
+  <div class="form-block">
+    Already registered? <a [routerLink]="['']">Log in</a>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+.toggle-icon{
+  position:absolute;
+  right:0;
+  top:2px;
+}
+
+mat-form-field{
+  width:100%;
+}
+
+.form-container{
+  display:flex;
+  position: relative;
+  height:100vh;
+  width:350px;
+  margin:0 auto;
+  align-items:center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-block{
+  margin-top:20px;
+}
+
+.form-block a{
+  font-weight:bold;
+  color:#000;
+  margin-left:10px;
+}
+
+.error{
+  position: relative;
+  width:100%;
+  top:-30px;
+}
+.error .block{
+  left:0;
+  right:0;
+  margin:0 auto;
+  font-weight:bold;
+  position: absolute;
+  text-align: center;
+}
+.err-field .block{
+  max-height:0;
+  height:fit-content;
+  top:0;
+  opacity: 0;
+
+  transition-duration: 0.4s;
+}
+
+.err-field-active .block{
+  position: absolute;
+  opacity: 1;
+  max-height:100px;
+  top:0;
+  color: #bd2525;
+  font-weight:bold;
+  transition-duration: 0.4s;
+}
+

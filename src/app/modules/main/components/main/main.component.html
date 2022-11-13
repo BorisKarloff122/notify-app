@@ -1,0 +1,15 @@
+<div class="container" *ngIf="(userInfo$ | async) as userInfo; else appDown">
+  <div class="district">
+      {{userInfo.district}}
+  </div>
+  <div class="img-block">
+
+  </div>
+  <div class="status-block">
+    {{userInfo.alertStatus}}
+  </div>
+</div>
+
+<ng-template #appDown>
+  <div class="app-down">App is currently offline</div>
+</ng-template>

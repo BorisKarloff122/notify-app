@@ -20,3 +20,4 @@ export const validatePassStrength = (): ValidatorFn =>{
     return !passwordValid ? {passwordStrength:true}: null;
   }
 }
+
